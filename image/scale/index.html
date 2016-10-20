@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background: black;
+		}
+		#canvas{
+			display:block;
+			margin:30px auto;
+			border:1px solid #aaa;
+		}
+		#scale-range{
+			display:block;
+			margin:20px auto;
+			width:800px;
+		}
+		#watermark-canvas{
+			display:none;
+			margin:0 auto;
+			border: 1px solid #aaa;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas">
+		浏览器不支持canvas。
+	</canvas>
+	<canvas id="watermark-canvas">
+		浏览器不支持canvas。
+	</canvas>
+	<input type="range" id="scale-range" min="0.5" max="3.0" step="0.01" value="1.0" />
+	<script>	
+
+
+	var canvas=document.getElementById('canvas');
+	var slider=document.getElementById('scale-range');
+		canvas.width=1152;
+		canvas.height=768;
+	var ctx=canvas.getContext("2d");
+	var image=new Image();
+	var watermarkCanvas=document.getElementById('watermark-canvas');
+	var watermarkContext=watermarkCanvas.getContext("2d");
+
+
+	window.onload=function () {
+		var scale=slider.value;
+
+		image.src="img.jpg";
+		image.onload=function () {
+			//ctx.drawImage(image,0,0);
+			drawImageByScale(scale);
+		};
+		slider.onmousemove=function () {
+			scale=slider.value;
+			drawImageByScale(scale);
+		};
+
+
+		function windowToCanvas(x,y) {
+			var bbox=canvas.getBoundingClientRect();
+			return {x:x-bbox.left,y:y-bbox.top};
+
+		}
+
+
+		canvas.onmousedown=function (e) {
+			e.preventDefault();
+
+			var point=windowToCanvas(e.clientX,e.clientY);
+			console.log(point.x,point.y);
+		};
+		canvas.onmousemove=function () {
+			e.preventDefault();
+		};
+
+
+		canvas.onmouseup=function () {
+			e.preventDefault();
+		};
+
+
+		canvas.onmouseout=function () {
+			e.preventDefault();
+		};
+
+
+
+
+
+
+
+
+
+
+
+		//setup watermark canvas
+		watermarkCanvas.width=600;
+		watermarkCanvas.height=100;
+
+		watermarkContext.font="bold 50px Arial";
+		watermarkContext.lineWidth = "1";
+		watermarkContext.fillStyle = "rgba(255,255,255,0.5)";
+		watermarkContext.textBaseline = "middle";
+		watermarkContext.fillText("== hpulhbiubiu.com ==", 20, 50);
+	};
+
+
+	function drawImageByScale(scale) {
+
+		var imageWidth=1152 * scale;
+		var imageHeight=768 * scale;
+		
+
+		//var sx=imageWidth/2-canvas.width/2;
+		//var sy=imageHeight/2-canvas.height/2;
+		//ctx.drawImage(image,sx,sy,canvas.width,canvas.height,0,0,canvas.width,canvas.height);
+		//这三行有问题！！！
+
+
+		var dx=canvas.width/2-imageWidth/2;
+		var dy=canvas.height/2-imageHeight/2;
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.drawImage(image,dx,dy,imageWidth,imageHeight);
+		ctx.drawImage(watermarkCanvas,canvas.width-watermarkCanvas.width,canvas.height-watermarkCanvas.height);
+	}
+
+
+	</script>
+</body>
+</html>
