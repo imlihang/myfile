@@ -1,0 +1,55 @@
+*{
+	margin: 0;padding: 0;
+}
+nav{
+	position: absolute;
+}
+.btn{
+	position: relative;
+	display: block;
+	width: 120px;
+	height: 120px;
+	background-image: url('../image/icon.jpg')  ;
+	background-size: cover;
+	margin-bottom: 10px;
+	margin-left: 10px;
+
+	
+}
+.btn:hover,.btn_click{
+	background-image: url('../image/icon2.jpg') ;
+} 
+
+.nav_list a{
+	display: block;
+	width: 200px;
+	height: 60px;
+	background: #006699;
+	line-height: 60px;
+	text-align: center;
+	font-family: Microsoft YaHei;
+	color: #FFF;
+	text-decoration: none;
+	font-size: 20px;
+	border-bottom: 2px solid #000000;
+}
+.nav_list{
+	position: relative;
+	left: -200px;
+}
+.image_list{
+	display: none;
+}
+.image_list a{
+	display: block;
+	width: 200px;
+	height: 60px;
+	background: #006699;
+	line-height: 60px;
+	text-align: center;
+	font-family: Microsoft YaHei;
+	color: #FFF;
+	text-decoration: none;
+	font-size: 20px;
+	border-bottom: 2px solid #000000;
+}
