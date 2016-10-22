@@ -9,8 +9,8 @@ header{
 	text-align: center;
 }
 header #info{
+	margin: 0 auto;
 	text-align: center;
-	float: left;
 }
 header h1 {
 	font-family: Arial;
@@ -24,7 +24,7 @@ header #newgamebutton{
 	width: 100px;
 	padding: 10px 10px;
 	background-color: #8f7a66;
-	margin: 10px 0px 10px 30px;
+	margin: 30px 0px 30px 50px;
 	font-family: Arial;
 	color: white;
 
@@ -39,7 +39,7 @@ header #newgamebutton:hover{
 }
 header p{
 	font-family: Arial;
-	margin: 10px 30px 10px 0;
+	margin: 30px 50px 30px 0;
 	display: block;
 	width: 100px;
 	padding: 10px 10px;
