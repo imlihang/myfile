@@ -17,8 +17,10 @@ function prepareForMobile() {
 		gridContainerWidth=500;
 		cellSpace=20;
 		cellSideLength=100;
+		documentWidth=500;
 	}
 
+	$('#info').css('width', documentWidth);
 	$('#grid-container').css('width', gridContainerWidth-2*cellSpace+'px');
 	$('#grid-container').css('height', gridContainerWidth-2*cellSpace+'px');
 	$('#grid-container').css('padding',cellSpace+'px');
